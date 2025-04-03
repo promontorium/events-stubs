@@ -1,0 +1,57 @@
+[project]
+name = "events-stubs"
+version = "0.1.0"
+description = "Type stubs for events package"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "events>=0.5",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.6.0",
+    "ruff>=0.11.2",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["events"]
+package-dir = { "" = "events-stubs" }
+
+[tool.setuptools.package-data]
+events = ["*.pyi", "py.typed"]
+
+[tool.mypy]
+# Coverage
+disallow_untyped_calls = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+disallow_untyped_decorators = true
+check_untyped_defs = true
+warn_incomplete_stub = true
+
+# Any and Generics
+disallow_any_decorated = true
+# disallow_any_explicit = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+warn_return_any = true
+
+# Something unused
+warn_unused_configs = true
+warn_unused_ignores = true
+
+# Possible errors
+disallow_any_unimported = true
+warn_redundant_casts = true
+strict_equality = true
+strict_concatenate = true
+warn_unreachable = true
+no_implicit_reexport = true
+
+# Extra
+strict = true
